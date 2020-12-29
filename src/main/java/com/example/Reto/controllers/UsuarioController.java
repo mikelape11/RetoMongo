@@ -4,6 +4,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,6 +16,7 @@ import com.example.Reto.repositories.UsuarioRepository;
 import com.example.Reto.models.Usuario;
 @RequestMapping("/usuarios")
 @RestController
+@CrossOrigin(origins="http://localhost:3000")//IMPORTANTE!!!!!!!!
 public class UsuarioController {
 
 	 @Autowired
@@ -30,7 +32,7 @@ public class UsuarioController {
 	    public Object login(@RequestBody Usuario usuario){
 	    	//Falta comprobar si el usuario existe. Javi
 	    	Usuario user = (Usuario) repository.findByUsuario(usuario.getUsuario());
-	    	if(usuario.getPassword().equals(user.getPassword())){
+	    	if(usuario.getPassword().equals(user.getPassword())){//El error 500 que da es en esta línea, a ver si veis porque es
 	    		return usuario;
 	    	}else{
 	    		return false;
