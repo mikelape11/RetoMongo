@@ -31,10 +31,10 @@ public class UsuarioController {
 	    	//Falta comprobar si el usuario existe. Javi
 	    	Usuario user = (Usuario) repository.findByUsuario(usuario.getUsuario());
 	    	if(usuario.getPassword().equals(user.getPassword())){
-	    		return true;
+	    		return usuario;
 	    	}else{
 	    		return false;
-	    	}//Esto es temporal, pero de momento creo que se puede tirar. Javi
+	    	}//Esto es temporal, pero de momento no tira. Javi
 	    }
 
 }
