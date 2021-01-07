@@ -6,7 +6,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection = "Usuario")
 public class Usuario {
 	@Id
-	private String id;
+	private String _id;
 	private String usuario;
 	private String password;
 	private int rol;
@@ -14,20 +14,20 @@ public class Usuario {
 	public Usuario(){
 	}
 
-	public Usuario(String id, String usuario, String password, int rol) {
+	public Usuario(String _id, String usuario, String password, int rol) {
 		super();
-		this.id = id;
+		this._id = _id;
 		this.usuario = usuario;
 		this.password = password;
 		this.rol = rol;
 	}
 
-	public String get_id() {
-		return id;
+	public String getId() {
+		return _id;
 	}
 
-	public void set_id(String id) {
-		this.id = id;
+	public void setId(String _id) {
+		this._id = _id;
 	}
 
 	public String getUsuario() {

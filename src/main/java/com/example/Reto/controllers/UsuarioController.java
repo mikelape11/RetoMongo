@@ -32,8 +32,11 @@ public class UsuarioController {
 	    public Object login(@RequestBody Usuario usuario){
 	    	//Falta comprobar si el usuario existe. Javi
 	    	Usuario user = (Usuario) repository.findByUsuario(usuario.getUsuario());
+//	    	System.out.println(user.getPassword());
+//	    	System.out.println(usuario.getPassword());
+//	    	System.out.println(user.getId());
 	    	if(usuario.getPassword().equals(user.getPassword())){//El error 500 que da es en esta línea, a ver si veis porque es
-	    		return usuario;
+	    		return user;
 	    	}else{
 	    		return false;
 	    	}//Esto es temporal, pero de momento no tira. Javi

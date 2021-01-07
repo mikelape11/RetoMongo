@@ -1,11 +1,10 @@
 package com.example.Reto.repositories;
 
-import java.util.Optional;
-
 import org.springframework.data.mongodb.repository.MongoRepository;
 
+import com.example.Reto.models.Ranking;
 import com.example.Reto.models.Rutas;
 
-public interface RutasRepository extends MongoRepository<Rutas, String> {
-	Optional<Rutas> findById(String id);
+public interface RankingRepository extends MongoRepository<Ranking, String>{
+
 }
