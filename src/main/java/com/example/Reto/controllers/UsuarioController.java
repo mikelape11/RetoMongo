@@ -2,6 +2,7 @@ package com.example.Reto.controllers;
 
 import java.util.List;
 
+import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -35,10 +36,15 @@ public class UsuarioController {
 //	    	System.out.println(user.getPassword());
 //	    	System.out.println(usuario.getPassword());
 //	    	System.out.println(user.getId());
-	    	if(usuario.getPassword().equals(user.getPassword())){//El error 500 que da es en esta línea, a ver si veis porque es
-	    		return user;
+	    	JSONObject json = new JSONObject();
+	    	json.put("usuario", user.getUsuario());
+	    	
+	    	if(usuario.getPassword().equals(user.getPassword())){//El error 500 que da es en esta línea, a ver si veis porque e
+	    		json.put("status", 200);
+	    		return json;
 	    	}else{
-	    		return false;
+	    		json.put("error", 404);
+	    		return json;
 	    	}//Esto es temporal, pero de momento no tira. Javi
 	    }
 
