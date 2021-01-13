@@ -21,7 +21,7 @@ import com.auth0.jwt.exceptions.JWTCreationException;
 import com.example.Reto.models.Usuario;
 @RequestMapping("/usuarios")
 @RestController
-@CrossOrigin(origins="http://localhost:3000")//IMPORTANTE!!!!!!!!
+@CrossOrigin(origins = "*")//IMPORTANTE!!!!!!!!
 public class UsuarioController {
 
 	 @Autowired
@@ -31,6 +31,11 @@ public class UsuarioController {
 	    public List<Usuario> getUsuarios(){
 	        return repository.findAll();
 	    }
+
+	    @PostMapping("/nuevo")
+		  public void isnertarUsuario(@RequestBody Usuario usuario) {
+	    	repository.save(usuario);
+		  }
 
 	    @PostMapping("/login")
 	    @ResponseStatus(HttpStatus.OK)

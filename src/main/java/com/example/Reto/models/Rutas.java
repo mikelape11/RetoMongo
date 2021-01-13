@@ -10,6 +10,7 @@ public class Rutas {
 	@Id
 	private String id;
 	private String nombre;
+	private String ciudad;
 	private float distancia;
 	private int tiempo;
 	private List<RutasData> rutas_data;
@@ -26,6 +27,12 @@ public class Rutas {
 	}
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
+	}
+	public String getCiudad() {
+		return ciudad;
+	}
+	public void setCiudad(String ciudad) {
+		this.ciudad = ciudad;
 	}
 	public float getDistancia() {
 		return distancia;

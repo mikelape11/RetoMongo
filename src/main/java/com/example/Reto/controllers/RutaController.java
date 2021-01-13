@@ -31,6 +31,10 @@ public class RutaController {
 		public Optional<Rutas> getRuta(@PathVariable String id){
 			return repository.findById(id);
 		}
+		@GetMapping("/ciudad/{ciudad}")
+		public List<Rutas> getRutaCiudad(@PathVariable String ciudad){
+			return repository.findByCiudad(ciudad);
+		}
 		@PostMapping("/save")
 		public Rutas saveRuta(@RequestBody Rutas ruta){
 			return repository.save(ruta);
