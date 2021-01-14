@@ -11,20 +11,19 @@ public class Preguntas {
 	private String _id;
 	private int numPregunta;
 	private String pregunta;
-	private List<String> respuestas;
+	private List<PreguntasRespuestas> respuestas;
 	private String rutasId;
+	private int opcion;
 
-	public Preguntas(String _id, int numPregunta, String pregunta, List<String> respuestas, String rutasId) {
+	public Preguntas(String _id, int numPregunta, String pregunta, List<PreguntasRespuestas> respuestas, String rutasId,
+			int opcion) {
 		super();
 		this._id = _id;
 		this.numPregunta = numPregunta;
 		this.pregunta = pregunta;
 		this.respuestas = respuestas;
 		this.rutasId = rutasId;
-	}
-
-	public Preguntas(){
-
+		this.opcion = opcion;
 	}
 
 	public String get_id() {
@@ -51,11 +50,11 @@ public class Preguntas {
 		this.pregunta = pregunta;
 	}
 
-	public List<String> getRespuestas() {
+	public List<PreguntasRespuestas> getRespuestas() {
 		return respuestas;
 	}
 
-	public void setRespuestas(List<String> respuestas) {
+	public void setRespuestas(List<PreguntasRespuestas> respuestas) {
 		this.respuestas = respuestas;
 	}
 
@@ -66,6 +65,20 @@ public class Preguntas {
 	public void setRutasId(String rutasId) {
 		this.rutasId = rutasId;
 	}
+
+	public int getOpcion() {
+		return opcion;
+	}
+
+	public void setOpcion(int opcion) {
+		this.opcion = opcion;
+	}
+
+	public Preguntas(){
+
+	}
+
+
 
 
 

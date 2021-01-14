@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,6 +32,10 @@ public class RutaController {
 		public Optional<Rutas> getRuta(@PathVariable String id){
 			return repository.findById(id);
 		}
+		@DeleteMapping("/{id}")
+	    public void borrarRuta(@PathVariable String id){
+	    	repository.deleteById(id);
+	    }
 		@GetMapping("/ciudad/{ciudad}")
 		public List<Rutas> getRutaCiudad(@PathVariable String ciudad){
 			return repository.findByCiudad(ciudad);
