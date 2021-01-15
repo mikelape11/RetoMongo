@@ -10,16 +10,18 @@ public class Usuario {
 	private String usuario;
 	private String password;
 	private int rol;
+	private String avatar;
 
 	public Usuario(){
 	}
 
-	public Usuario(String _id, String usuario, String password, int rol) {
+	public Usuario(String _id, String usuario, String password, int rol, String avatar) {
 		super();
 		this._id = _id;
 		this.usuario = usuario;
 		this.password = password;
 		this.rol = rol;
+		this.avatar = avatar;
 	}
 
 	public String getId() {
@@ -52,5 +54,13 @@ public class Usuario {
 
 	public void setRol(int rol) {
 		this.rol = rol;
+	}
+
+	public String getAvatar() {
+		return avatar;
+	}
+
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 }
