@@ -9,16 +9,18 @@ public class Ranking {
 	private String _id;
 	private int puntos;
 	private String usuario_id;
+	private String nombre;
 	private int aciertos;
 	private int fallos;
 	private int tiempo;
 	private String rutas_id;
 
-	public Ranking(String _id, int puntos, String usuario_id, int aciertos, int fallos, int tiempo, String rutas_id) {
+	public Ranking(String _id, int puntos, String usuario_id, String nombre,int aciertos, int fallos, int tiempo, String rutas_id) {
 		super();
 		this._id = _id;
 		this.puntos = puntos;
 		this.usuario_id = usuario_id;
+		this.nombre = nombre;
 		this.aciertos = aciertos;
 		this.fallos = fallos;
 		this.tiempo = tiempo;
@@ -51,6 +53,13 @@ public class Ranking {
 
 	public void setUsuario_id(String usuario_id) {
 		this.usuario_id = usuario_id;
+	}
+	public String getNombre() {
+		return nombre;
+	}
+
+	public void setNombre(String nombre) {
+		this.nombre = nombre;
 	}
 
 	public int getAciertos() {

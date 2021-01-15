@@ -10,4 +10,5 @@ import com.example.Reto.models.Rutas;
 public interface RutasRepository extends MongoRepository<Rutas, String> {
 	Optional<Rutas> findById(String id);
 	List<Rutas> findByCiudad(String ciudad);
+	Optional<Rutas> findTopByOrderByIdDesc();
 }
