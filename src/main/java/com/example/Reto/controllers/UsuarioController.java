@@ -57,7 +57,7 @@ public class UsuarioController {
 	    @PutMapping("/actualizar")
 		public void actualizarUsuario(@RequestBody Usuario usuario) {
 	    	 Query query = new Query();
-	    	 query.addCriteria(Criteria.where("_id").is(usuario.getId()));
+	    	 query.addCriteria(Criteria.where("_id").is(usuario.get_id()));
 	    	 Usuario userTest1 = mongoTemplate.findOne(query, Usuario.class);
 	    	 userTest1.setUsuario(usuario.getUsuario());
 	    	 repository.save(usuario);
