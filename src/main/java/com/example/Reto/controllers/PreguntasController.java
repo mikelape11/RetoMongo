@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -29,7 +30,12 @@ public class PreguntasController {
 	}
 	@GetMapping("/{rutasId}")
 	public List<Preguntas> getPreguntaRuta(@PathVariable String rutasId){
-		return repository.findByRutasId(rutasId);
+		return repository.findByRutasIdOrderByNumPregunta(rutasId);
+	}
+	@DeleteMapping("/{rutasId}")
+	public void deletePreguntaRuta(@PathVariable String rutasId){
+		List<Preguntas> preguntas = repository.findByRutasId(rutasId);
+		repository.deleteAll(preguntas);
 	}
 	@PostMapping("/guardar")
 	public void savePregunta(@RequestBody Preguntas preguntas){

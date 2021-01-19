@@ -13,9 +13,9 @@ public class Ranking {
 	private int aciertos;
 	private int fallos;
 	private int tiempo;
-	private String rutas_id;
+	private String rutasId;
 
-	public Ranking(String _id, int puntos, String usuario_id, String nombre,int aciertos, int fallos, int tiempo, String rutas_id) {
+	public Ranking(String _id, int puntos, String usuario_id, String nombre,int aciertos, int fallos, int tiempo, String rutasId) {
 		super();
 		this._id = _id;
 		this.puntos = puntos;
@@ -24,7 +24,7 @@ public class Ranking {
 		this.aciertos = aciertos;
 		this.fallos = fallos;
 		this.tiempo = tiempo;
-		this.rutas_id = rutas_id;
+		this.rutasId = rutasId;
 	}
 
 	public Ranking(){
@@ -86,12 +86,12 @@ public class Ranking {
 		this.tiempo = tiempo;
 	}
 
-	public String getRutas_id() {
-		return rutas_id;
+	public String getRutasId() {
+		return rutasId;
 	}
 
-	public void setRutas_id(String rutas_id) {
-		this.rutas_id = rutas_id;
+	public void setRutasId(String rutasId) {
+		this.rutasId = rutasId;
 	}
 
 

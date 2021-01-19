@@ -12,5 +12,6 @@ public interface PreguntasRepository extends MongoRepository<Preguntas, String> 
 
 	List<Preguntas> findAll();
 	List<Preguntas> findByRutasId(String rutasId);
+	List<Preguntas> findByRutasIdOrderByNumPregunta(String rutasId);
 
 }
