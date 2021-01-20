@@ -11,6 +11,7 @@ import com.example.Reto.models.Rutas;
 public interface PreguntasRepository extends MongoRepository<Preguntas, String> {
 
 	List<Preguntas> findAll();
+	Preguntas findBy_id(String id);
 	List<Preguntas> findByRutasId(String rutasId);
 	List<Preguntas> findByRutasIdOrderByNumPregunta(String rutasId);
 

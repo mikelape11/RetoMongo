@@ -18,7 +18,7 @@ import com.example.Reto.models.Rutas;
 
 @RequestMapping("/routes")
 @RestController
-@CrossOrigin(origins="http://localhost:3000")//IMPORTANTE!!!!!!!
+@CrossOrigin(origins="*")//IMPORTANTE!!!!!!!
 public class RutaController {
 	@Autowired
 		private RutasRepository repository;
