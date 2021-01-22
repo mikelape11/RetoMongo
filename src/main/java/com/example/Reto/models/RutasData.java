@@ -4,15 +4,15 @@ import org.springframework.data.annotation.Id;
 
 public class RutasData {
 	@Id
-	private String id;
+	private String _id;
 	private float lat;
 	private float lng;
-	
-	public String getId() {
-		return id;
+
+	public String get_id() {
+		return _id;
 	}
-	public void setId(String id) {
-		this.id = id;
+	public void set_id(String _id) {
+		this._id = _id;
 	}
 	public float getLat() {
 		return lat;
@@ -26,7 +26,7 @@ public class RutasData {
 	public void setLng(float lng) {
 		this.lng = lng;
 	}
-	
-	
-	
+
+
+
 }
