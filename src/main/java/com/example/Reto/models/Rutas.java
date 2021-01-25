@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Document(collection="Rutas")
 public class Rutas {
 	@Id
-	private String _id;
+	private String id;
 	private String nombre;
 	private String ciudad;
 	private String imagen;
@@ -17,11 +17,11 @@ public class Rutas {
 	private List<RutasData> rutas_data;
 	private List<RutasLocalizacion> rutas_loc;
 	public Rutas(){}
-	public String get_id() {
-		return _id;
+	public String getId() {
+		return id;
 	}
-	public void set_id(String _id) {
-		this._id = _id;
+	public void setId(String id) {
+		this.id = id;
 	}
 	public String getNombre() {
 		return nombre;
