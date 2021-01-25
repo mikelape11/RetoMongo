@@ -40,13 +40,10 @@ public class RutaController {
 		public List<Rutas> getRutaCiudad(@PathVariable String ciudad){
 			return repository.findByCiudad(ciudad);
 		}
-		@GetMapping("/ultima_ruta")
-		public Optional<Rutas> getUltima(){
-			return repository.findTopByOrderByIdDesc();
-		}
 		@PostMapping("/save")
-		public Rutas saveRuta(@RequestBody Rutas ruta){
-			return repository.save(ruta);
+		public String saveRuta(@RequestBody Rutas ruta){
+			repository.save(ruta);
+			return ruta.get_id();
 		}
 }
 //https://www.baeldung.com/spring-boot-mongodb-upload-file para poner fotos
