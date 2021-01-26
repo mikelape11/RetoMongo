@@ -7,11 +7,11 @@ public class RutasData {
 	private String _id;
 	private float lat;
 	private float lng;
-	
+
 	public String get_id() {
 		return _id;
 	}
-	public void setId(String _id) {
+	public void set_id(String _id) {
 		this._id = _id;
 	}
 	public float getLat() {
@@ -26,7 +26,7 @@ public class RutasData {
 	public void setLng(float lng) {
 		this.lng = lng;
 	}
-	
-	
-	
+
+
+
 }

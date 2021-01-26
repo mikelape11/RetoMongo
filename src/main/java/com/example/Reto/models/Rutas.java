@@ -11,6 +11,7 @@ public class Rutas {
 	private String _id;
 	private String nombre;
 	private String ciudad;
+	private String imagen;
 	private float distancia;
 	private int tiempo;
 	private List<RutasData> rutas_data;
@@ -33,6 +34,12 @@ public class Rutas {
 	}
 	public void setCiudad(String ciudad) {
 		this.ciudad = ciudad;
+	}
+	public String getImagen() {
+		return imagen;
+	}
+	public void setImagen(String imagen) {
+		this.imagen = imagen;
 	}
 	public float getDistancia() {
 		return distancia;
@@ -59,5 +66,5 @@ public class Rutas {
 		this.rutas_loc = rutas_loc;
 	}
 
-	
+
 }

@@ -32,6 +32,6 @@ public class RutasLocalizacion {
 	public void setLng(float lng) {
 		this.lng = lng;
 	}
-	
-	
+
+
 }
