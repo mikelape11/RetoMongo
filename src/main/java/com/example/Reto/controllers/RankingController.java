@@ -30,9 +30,15 @@ public class RankingController {
     protected MongoTemplate mongoTemplate;
 
 	@GetMapping("/all")
-	public List<Ranking> getEanking(){
+	public List<Ranking> getRanking(){
 		return repository.findAll();
 	}
+
+	@GetMapping("/ordenado")
+	public List<Ranking> getRankingOrdenadoPorPuntuacion(){
+		 return repository.findAllByOrderByPuntosDesc();
+	}
+
 
 	@PostMapping("/nuevo")
 	  public void insertarRanking(@RequestBody Ranking ranking) {
