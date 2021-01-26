@@ -7,13 +7,15 @@ import org.springframework.data.mongodb.core.mapping.Document;
 public class Ubicacion {
 	@Id
 	private String _id;
+	private String nombreUsuario;
 	private float lat;
 	private float lng;
 	private String rutaId;
 
-	public Ubicacion(String _id, float lat, float lng, String rutaId) {
+	public Ubicacion(String _id, String nombreUsuario, float lat, float lng, String rutaId) {
 		super();
 		this._id = _id;
+		this.nombreUsuario = nombreUsuario;
 		this.lat = lat;
 		this.lng = lng;
 		this.rutaId = rutaId;
@@ -31,9 +33,18 @@ public class Ubicacion {
 		this._id = _id;
 	}
 
+	public void setNombreUsuario(String nombreUsuario) {
+		this.nombreUsuario = nombreUsuario;
+	}
+
+	public String getNombreUsuario() {
+		return nombreUsuario;
+	}
+
 	public float getLat() {
 		return lat;
 	}
+
 
 	public void setLat(float lat) {
 		this.lat = lat;
