@@ -1,7 +1,6 @@
 package com.example.Reto.controllers;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.json.simple.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +25,7 @@ import com.auth0.jwt.JWTVerifier;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.auth0.jwt.exceptions.JWTCreationException;
 import com.example.Reto.models.Usuario;
+
 @RequestMapping("/usuarios")
 @RestController
 @CrossOrigin(origins = "*")//IMPORTANTE!!!!!!!!
@@ -50,7 +50,7 @@ public class UsuarioController {
 	    }
 
 	    @PostMapping("/nuevo")
-		  public void isnertarUsuario(@RequestBody Usuario usuario) {
+		  public void insertarUsuario(@RequestBody Usuario usuario) {
 	    	repository.save(usuario);
 		  }
 
