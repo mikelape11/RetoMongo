@@ -43,7 +43,7 @@ public class RutaController {
 		@PostMapping("/save")
 		public String saveRuta(@RequestBody Rutas ruta){
 			repository.save(ruta);
-			return ruta.getId();
+			return ruta.get_id();
 		}
 }
 //https://www.baeldung.com/spring-boot-mongodb-upload-file para poner fotos

@@ -42,7 +42,7 @@ public class UbicacionController {
 	 @PutMapping("/actualizar")
 		public void actualizarUbicacion(@RequestBody Ubicacion ubicacion) {
 	    	 Query query = new Query();
-	    	 query.addCriteria(Criteria.where("nombreUsuario").is(ubicacion.getNombreUsuario()));
+	    	 query.addCriteria(Criteria.where("_id").is(ubicacion.get_id()));
 	    	 Ubicacion ubicacion1 = mongoTemplate.findOne(query, Ubicacion.class);
 	    	 ubicacion1.setNombreUsuario(ubicacion.getNombreUsuario());
 	    	 repository.save(ubicacion);
