@@ -30,7 +30,7 @@ public class RutaController {
 
 		@GetMapping("/{id}")
 		public Optional<Rutas> getRuta(@PathVariable String id){
-			return repository.findById(id);
+			return repository.findBy_id(id);
 		}
 		@DeleteMapping("/{id}")
 	    public void borrarRuta(@PathVariable String id){
@@ -41,9 +41,10 @@ public class RutaController {
 			return repository.findByCiudad(ciudad);
 		}
 		@PostMapping("/save")
-		public String saveRuta(@RequestBody Rutas ruta){
+		public Optional<Rutas> saveRuta(@RequestBody Rutas ruta){
 			repository.save(ruta);
-			return ruta.get_id();
+			Optional<Rutas> ruta2 = repository.findBy_id(ruta.get_id());
+			return ruta2;
 		}
 }
 //https://www.baeldung.com/spring-boot-mongodb-upload-file para poner fotos
