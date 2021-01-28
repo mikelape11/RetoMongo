@@ -6,7 +6,8 @@ import com.example.Reto.models.Ubicacion;
 
 public interface UbicacionRepository extends MongoRepository<Ubicacion, String>{
 
-	void deleteUbicacion(Ubicacion ubicacion);
+
+	void deleteBynombreUsuario(String nombreUsuario);
 
 
 }

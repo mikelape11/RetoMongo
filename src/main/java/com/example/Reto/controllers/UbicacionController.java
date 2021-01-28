@@ -50,9 +50,9 @@ public class UbicacionController {
 	    	 repository.save(ubicacion);
 	    }
 
-	  @DeleteMapping("/eliminarPorNombre")
-	  public void deleteEmpleados(@RequestBody Ubicacion ubicacion) {
-	    repository.deleteUbicacion(ubicacion);
+	  @DeleteMapping("/eliminarPorNombre/{nombreUsuario}")
+	  public void deleteUbicacion(@PathVariable String nombreUsuario) {
+	    repository.deleteBynombreUsuario(nombreUsuario);
 	  }
 
 
