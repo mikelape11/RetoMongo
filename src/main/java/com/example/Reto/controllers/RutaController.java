@@ -48,11 +48,12 @@ public class RutaController {
 			return ruta2;
 		}
 		@PutMapping("/update")
-		public Rutas updateRuta(@RequestBody Rutas ruta){
+		public String updateRuta(@RequestBody Rutas ruta){
 			Rutas rutaU = repository.findBy_id(ruta.get_id());
 			rutaU.setNombre(ruta.getNombre());
 			rutaU.setCiudad(ruta.getCiudad());
-			return repository.save(rutaU);
+			repository.save(rutaU);
+			return rutaU.get_id();
 		}
 }
 //https://www.baeldung.com/spring-boot-mongodb-upload-file para poner fotos
