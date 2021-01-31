@@ -24,30 +24,30 @@ public class RutaController {
 	@Autowired
 		private RutasRepository repository;
 
-		@GetMapping("/all")
+		@GetMapping("/all")//Funcion para recoger todas las rutas
 		public List<Rutas> getRutas(){
 			return repository.findAll();
 		}
 
-		@GetMapping("/{id}")
+		@GetMapping("/{id}")//Funcion para recoger una ruta en concreto mediante el identificador
 		public Rutas getRuta(@PathVariable String id){
 			return repository.findBy_id(id);
 		}
-		@DeleteMapping("/{id}")
+		@DeleteMapping("/{id}")//Funcion para borrar una ruta en concreto mediante el identificador
 	    public void borrarRuta(@PathVariable String id){
 	    	repository.deleteById(id);
 	    }
-		@GetMapping("/ciudad/{ciudad}")
+		@GetMapping("/ciudad/{ciudad}")//Funcion para recoger todas las rutas que sean de x ciudad
 		public List<Rutas> getRutaCiudad(@PathVariable String ciudad){
 			return repository.findByCiudad(ciudad);
 		}
-		@PostMapping("/save")
+		@PostMapping("/save")//Funcion para guardar la ruta
 		public Rutas saveRuta(@RequestBody Rutas ruta){
 			repository.save(ruta);
 			Rutas ruta2 = repository.findBy_id(ruta.get_id());
 			return ruta2;
 		}
-		@PutMapping("/update")
+		@PutMapping("/update")//Funcion para actualizar los datos de un ruta
 		public String updateRuta(@RequestBody Rutas ruta){
 			Rutas rutaU = repository.findBy_id(ruta.get_id());
 			rutaU.setNombre(ruta.getNombre());
@@ -56,4 +56,3 @@ public class RutaController {
 			return rutaU.get_id();
 		}
 }
-//https://www.baeldung.com/spring-boot-mongodb-upload-file para poner fotos

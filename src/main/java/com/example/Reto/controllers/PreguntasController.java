@@ -26,25 +26,25 @@ public class PreguntasController {
 	@Autowired
 	private PreguntasRepository repository;
 
-	@GetMapping("/all")
+	@GetMapping("/all")//Funcion para recoger todas las preguntas en la base de datos
 	public List<Preguntas> getPreguntas(){
 		return repository.findAll();
 	}
-	@GetMapping("/{rutasId}")
+	@GetMapping("/{rutasId}")//Coger las preguntas según su ruta
 	public List<Preguntas> getPreguntaRuta(@PathVariable String rutasId){
 		return repository.findByRutasIdOrderByNumPregunta(rutasId);
 	}
 
-	@DeleteMapping("/{rutasId}")
+	@DeleteMapping("/{rutasId}")//Borrar las preguntas según su ruta
 	public void deletePreguntaRuta(@PathVariable String rutasId){
 		List<Preguntas> preguntas = repository.findByRutasId(rutasId);
 		repository.deleteAll(preguntas);
 	}
-	@PostMapping("/guardar")
+	@PostMapping("/guardar")//Funcion para guardar una pregunta en una ruta
 	public void savePregunta(@RequestBody Preguntas preguntas){
 		repository.save(preguntas);
 	}
-	@PutMapping("/{id}")
+	@PutMapping("/{id}")//Funcion para actualizar las preguntas de una ruta
 	public Preguntas actPreguntas(@RequestBody Preguntas pregunta, @PathVariable String id){
 		Preguntas preg = repository.findBy_id(id);
 		preg.setPregunta(pregunta.getPregunta());

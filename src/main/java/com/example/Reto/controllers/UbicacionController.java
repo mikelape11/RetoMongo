@@ -30,18 +30,18 @@ public class UbicacionController {
 	 @Autowired
 	    protected MongoTemplate mongoTemplate;
 
-	 @GetMapping("/todos")
-	    public List<Ubicacion> getUbicacion(){
-	        return repository.findAll();
+	 @GetMapping("/{rutaId}")//Funcion para recoger todas las ubicaciones de los usuarios que estén en x ruta
+	    public List<Ubicacion> getUbicacion(String rutaId){
+	        return repository.findByRutaId(rutaId);
 	    }
 
-	@PostMapping("/nuevo")
+	@PostMapping("/nuevo")//Funcion para que un usuario inserte su ubicación al entrar a la ruta
 	  public void insertarUbicacion(@RequestBody Ubicacion ubicacion) {
 		repository.save(ubicacion);
 	  }
 
 
-	 @PutMapping("/actualizar")
+	 @PutMapping("/actualizar")//Funcion la cual irá actualizando la posicion del usuario
 		public void actualizarUbicacion(@RequestBody Ubicacion ubicacion) {
 	    	 Query query = new Query();
 	    	 query.addCriteria(Criteria.where("_id").is(ubicacion.get_id()));
@@ -50,7 +50,7 @@ public class UbicacionController {
 	    	 repository.save(ubicacion);
 	    }
 
-	  @DeleteMapping("/eliminarPorNombre/{nombreUsuario}")
+	  @DeleteMapping("/eliminarPorNombre/{nombreUsuario}")//Funcion que borrará la ubicación del usuario al salir
 	  public void deleteUbicacion(@PathVariable String nombreUsuario) {
 	    repository.deleteBynombreUsuario(nombreUsuario);
 	  }

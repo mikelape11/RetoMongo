@@ -29,23 +29,23 @@ public class RankingController {
 	@Autowired
     protected MongoTemplate mongoTemplate;
 
-	@GetMapping("/all")
+	@GetMapping("/all")//Funcion para recoger para recoger todos los ranking
 	public List<Ranking> getRanking(){
 		return repository.findAll();
 	}
 
-	@GetMapping("/ordenado")
+	@GetMapping("/ordenado")//Funcion para recoger todos los ranking ordenados
 	public List<Ranking> getRankingOrdenadoPorPuntuacion(){
 		 return repository.findAllByOrderByPuntosDesc();
 	}
 
 
-	@PostMapping("/nuevo")
+	@PostMapping("/nuevo")//Funcion para crerar un nuevo ranking 
 	  public void insertarRanking(@RequestBody Ranking ranking) {
 		repository.save(ranking);
 	  }
 
-	@PutMapping("/actualizar")
+	@PutMapping("/actualizar")//Funcion para actualizar los ranking cuando un usuario haga una nueva puntuacion
 	  public void actualizarRanking(@RequestBody Ranking ranking) {
 		Query query = new Query();
 		query.addCriteria(Criteria.where("_id").is(ranking.get_id()));
@@ -54,7 +54,7 @@ public class RankingController {
 		repository.save(ranking);
  }
 
-	@GetMapping("/{rutasId}")
+	@GetMapping("/{rutasId}")//Funcion para reocger las puntuaciones ordenadas segun la ruta
 	public List<Ranking> getPreguntaRuta(@PathVariable String rutasId){
 		return repository.findByRutasIdOrderByPuntosDesc(rutasId);
 	}

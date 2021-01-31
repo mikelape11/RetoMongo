@@ -40,21 +40,21 @@ public class UsuarioController {
 	    public List<Usuario> getUsuarios(){
 	        return repository.findAll();
 	    }
-	    @GetMapping("/todos_registrados")
+	    @GetMapping("/todos_registrados")//Funcion para recoger a los usuarios registrados desde el movil
 	    public List<Usuario> getUsuariosRegistrados(){
-	        return repository.findByRol(0);
+	        return repository.findByRol(1);
 	    }
-	    @DeleteMapping("/{id}")
+	    @DeleteMapping("/{id}")//Funcion bara eliminar usuario, ya sea por decision del jugador o del administrador
 	    public void borrarUsuario(@PathVariable String id){
 	    	repository.deleteById(id);
 	    }
 
-	    @PostMapping("/nuevo")
+	    @PostMapping("/nuevo")//Funcion para que un usuario se registre desde el movil
 		  public void insertarUsuario(@RequestBody Usuario usuario) {
 	    	repository.save(usuario);
 		  }
 
-	    @PutMapping("/actualizar")
+	    @PutMapping("/actualizar")//Funcion para que un usuario desde el movil actualice sus datos
 		public void actualizarUsuario(@RequestBody Usuario usuario) {
 	    	 Query query = new Query();
 	    	 query.addCriteria(Criteria.where("_id").is(usuario.get_id()));
@@ -64,14 +64,18 @@ public class UsuarioController {
 	    }
 
 
-	    @PostMapping("/login")
+	    @PostMapping("/login")//Inicio de sesión de usuario
 	    @ResponseStatus(HttpStatus.OK)
 	    public Object login(@RequestBody Usuario usuario){
-	    	//Falta comprobar si el usuario existe. Javi
-	    	Usuario user = (Usuario) repository.findByUsuario(usuario.getUsuario());
-//	    	System.out.println(user.getPassword());
-//	    	System.out.println(usuario.getPassword());
-//	    	System.out.println(user.getId());
+	    	JSONObject json = new JSONObject();//Se crea el objeto json que se enviará para comprobar si ha salido bien el inicio de sesion
+	    	Usuario user;
+	    	try{
+	    		user = (Usuario) repository.findByUsuario(usuario.getUsuario());//Buscamos si el usuario existe
+	    	}catch(Exception e){
+	    		json.put("error", 404);//Si el usuario no existe se mandará el json con el error
+	    		return json;
+	    	}
+
 	    	String token = "";
 	    	try {
 	    	    Algorithm algorithm = Algorithm.HMAC256("secret");
@@ -84,19 +88,17 @@ public class UsuarioController {
 	    	    	    .build();
 	    	} catch (JWTCreationException exception){
 	    	    //Invalid Signing configuration / Couldn't convert Claims.
-	    	}
+	    	}//Funcion para crear un token de verificación
 
-	    	JSONObject json = new JSONObject();
-	    	json.put("user", user.getUsuario());
-	    	json.put("token", token);
-
-	    	if(usuario.getPassword().equals(user.getPassword())){//El error 500 que da es en esta línea, a ver si veis porque e
-	    		json.put("status", 200);
+	    	if(usuario.getPassword().equals(user.getPassword())){
+	    		json.put("user", user.getUsuario());//Metemos el usuario dentro del json
+		    	json.put("token", token);//el token creado
+	    		json.put("status", 200);//y el status de exito
 	    		return json;
 	    	}else{
-	    		json.put("error", 404);
+	    		json.put("error", 404);//si falla la comprobacion de contraseña se enviará el código de error not found
 	    		return json;
-	    	}//Esto es temporal, pero de momento no tira. Javi
+	    	}
 	    }
 
 }
