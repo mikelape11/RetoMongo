@@ -10,4 +10,5 @@ import com.example.Reto.models.Rutas;
 public interface RankingRepository extends MongoRepository<Ranking, String>{
 	List<Ranking> findByRutasIdOrderByPuntosDesc(String rutasId);
 	List<Ranking> findAllByOrderByPuntosDesc();
+	List<Ranking> findByNombre(String usuario);
 }

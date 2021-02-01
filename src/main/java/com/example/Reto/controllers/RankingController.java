@@ -7,6 +7,7 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 import org.springframework.data.mongodb.core.query.Criteria;
 import org.springframework.data.mongodb.core.query.Query;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -39,7 +40,6 @@ public class RankingController {
 		 return repository.findAllByOrderByPuntosDesc();
 	}
 
-
 	@PostMapping("/nuevo")//Funcion para crerar un nuevo ranking 
 	  public void insertarRanking(@RequestBody Ranking ranking) {
 		repository.save(ranking);
@@ -57,5 +57,11 @@ public class RankingController {
 	@GetMapping("/{rutasId}")//Funcion para reocger las puntuaciones ordenadas segun la ruta
 	public List<Ranking> getPreguntaRuta(@PathVariable String rutasId){
 		return repository.findByRutasIdOrderByPuntosDesc(rutasId);
+	}
+	
+	@DeleteMapping("/{usuario}")
+	public void borrarRankingUsuario(@PathVariable String usuario){
+		List<Ranking> ranking = repository.findByNombre(usuario);
+		repository.deleteAll(ranking);
 	}
 }

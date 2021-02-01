@@ -10,6 +10,7 @@ import com.example.Reto.models.Usuario;
 public interface UsuarioRepository extends MongoRepository<Usuario, String>{
 	Object findByUsuario(String usuario);
 	List<Usuario> findByRol(int rol);
+	Usuario findBy_id(String id);
 
 
 
